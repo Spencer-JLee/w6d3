@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destory_all
+Artwork.destroy_all
+
+users = User.create([{ username: "Steve" }, { username: "Joe" }, { username: "XxShadowlordxX" },
+{ username: "DemonSniper" }, { username: "VegansVsMeatheads" }])
+
+#  title      :string          
+#  image_url  :string        
+#  artist_id  :integer 
+artworks = Artwork.create([ { title: , image_url: , artist_id: }, ])
