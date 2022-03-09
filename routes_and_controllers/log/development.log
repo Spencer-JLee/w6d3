@@ -246,3 +246,187 @@ Completed 404 Not Found in 39ms (ActiveRecord: 22.5ms)
 ActiveRecord::RecordNotFound - Couldn't find User with 'id'=30:
   app/controllers/users_controller.rb:16:in `show'
 
+Started GET "/users/2/" for ::1 at 2022-03-09 14:08:43 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 200 OK in 140ms (Views: 2.0ms | ActiveRecord: 95.0ms)
+
+
+Started PATCH "/users/2/" for ::1 at 2022-03-09 14:09:06 -0500
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Kevin2", "email"=>"Kevin@hotmail.com"}, "id"=>"2"}
+  [1m[36mUser Load (16.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (11.2ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["name", "Kevin2"], ["email", "Kevin@hotmail.com"], ["updated_at", "2022-03-09 19:09:06.335417"], ["id", 2]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (14.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 55ms (Views: 1.0ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/users/2/" for ::1 at 2022-03-09 14:09:10 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (162.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 200 OK in 164ms (Views: 0.4ms | ActiveRecord: 162.0ms)
+
+
+Started GET "/users/3/" for ::1 at 2022-03-09 14:09:43 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 200 OK in 68ms (Views: 0.8ms | ActiveRecord: 22.4ms)
+
+
+Started DELETE "/users/3/" for ::1 at 2022-03-09 14:10:08 -0500
+Processing by UsersController#destroy as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (125.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:31
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:32
+  [1m[36mUser Destroy (44.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/users_controller.rb:32
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:32
+No template found for UsersController#destroy, rendering head :no_content
+Completed 204 No Content in 608ms (ActiveRecord: 173.8ms)
+
+
+Started GET "/users/3/" for ::1 at 2022-03-09 14:10:13 -0500
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (32.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 404 Not Found in 34ms (ActiveRecord: 32.4ms)
+
+
+
+ActiveRecord::RecordNotFound - Couldn't find User with 'id'=3:
+  app/controllers/users_controller.rb:16:in `show'
+
+Started POST "/users/" for ::1 at 2022-03-09 14:11:34 -0500
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"name"=>"Steve", "email"=>"Steve@outlook.com"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8
+  [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Steve"], ["email", "Steve@outlook.com"], ["created_at", "2022-03-09 19:11:34.841992"], ["updated_at", "2022-03-09 19:11:34.841992"]]
+  ↳ app/controllers/users_controller.rb:8
+  [1m[35m (7.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8
+Completed 200 OK in 87ms (Views: 0.5ms | ActiveRecord: 19.4ms)
+
+
+Started PATCH "/users/" for ::1 at 2022-03-09 14:11:46 -0500
+  
+ActionController::RoutingError (No route matches [PATCH] "/users"):
+  
+actionpack (5.2.6.3) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.6.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.6.3) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.6.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.6.3) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.6.3) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.6.3) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.6.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.6.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.6.3) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.6.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.6.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.6.3) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.6.3) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/" for ::1 at 2022-03-09 14:12:03 -0500
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"Steve2", "email"=>"Steve@outlook.com2"}}
+  [1m[36mUser Load (23.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 28ms (Views: 3.8ms | ActiveRecord: 23.4ms)
+
+
+Started PATCH "/users/6/" for ::1 at 2022-03-09 14:12:09 -0500
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"Steve2", "email"=>"Steve@outlook.com2"}, "id"=>"6"}
+  [1m[36mUser Load (105.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:21
+  [1m[35m (22.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:23
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "email" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["name", "Steve2"], ["email", "Steve@outlook.com2"], ["updated_at", "2022-03-09 19:12:10.126397"], ["id", 6]]
+  ↳ app/controllers/users_controller.rb:23
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:23
+Completed 200 OK in 139ms (Views: 0.7ms | ActiveRecord: 132.3ms)
+
+
+Started GET "/users/6/" for ::1 at 2022-03-09 14:14:49 -0500
+Processing by UsersController#show as */*
+  Parameters: {"user"=>{"name"=>"Steve2", "email"=>"Steve@outlook.com2"}, "id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:16
+Completed 200 OK in 76ms (Views: 2.3ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/users/" for ::1 at 2022-03-09 14:14:53 -0500
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{"name"=>"Steve2", "email"=>"Steve@outlook.com2"}}
+  [1m[36mUser Load (40.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:3
+Completed 200 OK in 46ms (Views: 4.4ms | ActiveRecord: 40.4ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3105287571145122930)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to ChangeUsers (20220309191556)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (45.2ms)[0m  [1m[35mALTER TABLE "users" DROP COLUMN "email"[0m
+  ↳ db/migrate/20220309191556_change_users.rb:3
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "users" RENAME COLUMN "name" TO "username"[0m
+  ↳ db/migrate/20220309191556_change_users.rb:4
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+  ↳ db/migrate/20220309191556_change_users.rb:6
+  [1m[36mActiveRecord::SchemaMigration Create (2.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220309191556"]]
+  ↳ bin/rails:9
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3105287571145122930)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Steve2"], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (2.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Steve3"], ["LIMIT", 1]]
+  [1m[36mUser Create (5.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Steve3"], ["created_at", "2022-03-09 19:21:04.941031"], ["updated_at", "2022-03-09 19:21:04.941031"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
