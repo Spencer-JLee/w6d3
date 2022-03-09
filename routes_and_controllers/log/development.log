@@ -1178,3 +1178,29 @@ puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
 puma (3.12.6) lib/puma/server.rb:476:in `process_client'
 puma (3.12.6) lib/puma/server.rb:334:in `block in run'
 puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/8/artworks" for ::1 at 2022-03-09 17:10:21 -0500
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"8"}
+Completed 500 Internal Server Error in 149ms (ActiveRecord: 81.1ms)
+
+
+
+ActiveRecord::ConfigurationError - Can't join 'Artwork' to association named 'shared_artworks'; perhaps you misspelled it?:
+  app/controllers/artworks_controller.rb:4:in `index'
+
+Started GET "/users/8/artworks" for ::1 at 2022-03-09 17:22:26 -0500
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"8"}
+  [1m[36mArtwork Load (4.2ms)[0m  [1m[34mSELECT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE (artist_id = '8' OR artwork_shares.viewer_id = '8')[0m
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 200 OK in 153ms (Views: 45.7ms | ActiveRecord: 96.8ms)
+
+
+Started GET "/users/8/artworks" for ::1 at 2022-03-09 17:22:50 -0500
+Processing by ArtworksController#index as */*
+  Parameters: {"user_id"=>"8"}
+  [1m[36mArtwork Load (13.7ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE (artist_id = '8' OR artwork_shares.viewer_id = '8')[0m
+  ↳ app/controllers/artworks_controller.rb:4
+Completed 200 OK in 200ms (Views: 35.5ms | ActiveRecord: 116.3ms)
+
+
