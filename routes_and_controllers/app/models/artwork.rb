@@ -32,8 +32,17 @@ class Artwork < ApplicationRecord
       .distinct
   end
 
+  def self.favorited_artworks(user_id)
+    Artwork
+      .left_joins(:artwork_shares)
+      .where('(artist_id = :user_id) OR (artwork_shares.viewer_id = :user_id AND artwork_shares.favorited = true)', user_id: user_id )
+      .distinct
+  end
+
   has_many :comments,
     foreign_key: :artwork_id,
     class_name: :Comment,
     dependent: :destroy
+
+  has_many :likes, as: :likeable
 end

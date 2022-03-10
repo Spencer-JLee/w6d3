@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Like.destroy_all
 Comment.destroy_all
 ArtworkShare.destroy_all
 Artwork.destroy_all
@@ -54,4 +55,30 @@ comments = Comment.create([
   { body: "I would like to buy this painting", user_id: users[3].id, artwork_id: artworks[2].id},
   { body: "I agree with the above commenter", user_id: users[4].id, artwork_id: artworks[3].id},
   { body: ":D", user_id: users[4].id, artwork_id: artworks[2].id},
+])
+
+likes = Like.create([
+  { liker_id: users[0].id, likeable_type: :Comment, likeable_id: comments[4].id },
+  { liker_id: users[0].id, likeable_type: :Comment, likeable_id: comments[3].id },
+  { liker_id: users[1].id, likeable_type: :Comment, likeable_id: comments[3].id },
+  { liker_id: users[1].id, likeable_type: :Comment, likeable_id: comments[2].id },
+  { liker_id: users[1].id, likeable_type: :Comment, likeable_id: comments[1].id },
+  { liker_id: users[2].id, likeable_type: :Comment, likeable_id: comments[0].id },
+  { liker_id: users[2].id, likeable_type: :Comment, likeable_id: comments[1].id },
+  { liker_id: users[3].id, likeable_type: :Comment, likeable_id: comments[2].id },
+  { liker_id: users[3].id, likeable_type: :Comment, likeable_id: comments[3].id },
+  { liker_id: users[4].id, likeable_type: :Comment, likeable_id: comments[4].id },
+  { liker_id: users[4].id, likeable_type: :Comment, likeable_id: comments[0].id },
+
+  { liker_id: users[0].id, likeable_type: :Artwork, likeable_id: artworks[4].id },
+  { liker_id: users[0].id, likeable_type: :Artwork, likeable_id: artworks[3].id },
+  { liker_id: users[1].id, likeable_type: :Artwork, likeable_id: artworks[3].id },
+  { liker_id: users[1].id, likeable_type: :Artwork, likeable_id: artworks[2].id },
+  { liker_id: users[1].id, likeable_type: :Artwork, likeable_id: artworks[1].id },
+  { liker_id: users[2].id, likeable_type: :Artwork, likeable_id: artworks[0].id },
+  { liker_id: users[2].id, likeable_type: :Artwork, likeable_id: artworks[1].id },
+  { liker_id: users[3].id, likeable_type: :Artwork, likeable_id: artworks[2].id },
+  { liker_id: users[3].id, likeable_type: :Artwork, likeable_id: artworks[3].id },
+  { liker_id: users[4].id, likeable_type: :Artwork, likeable_id: artworks[4].id },
+  { liker_id: users[4].id, likeable_type: :Artwork, likeable_id: artworks[0].id }
 ])

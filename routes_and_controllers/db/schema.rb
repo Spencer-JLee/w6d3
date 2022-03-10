@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_10_152037) do
+ActiveRecord::Schema.define(version: 2022_03_10_170321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_152037) do
     t.integer "viewer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "favorited", default: false
     t.index ["artwork_id"], name: "index_artwork_shares_on_artwork_id"
     t.index ["viewer_id", "artwork_id"], name: "index_artwork_shares_on_viewer_id_and_artwork_id", unique: true
   end
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_03_10_152037) do
     t.integer "artist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "owner_favorited", default: false
     t.index ["artist_id", "title"], name: "index_artworks_on_artist_id_and_title", unique: true
   end
 
@@ -41,6 +43,16 @@ ActiveRecord::Schema.define(version: 2022_03_10_152037) do
     t.datetime "updated_at", null: false
     t.index ["artwork_id"], name: "index_comments_on_artwork_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.string "likeable_type"
+    t.bigint "likeable_id"
+    t.integer "liker_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
+    t.index ["liker_id"], name: "index_likes_on_liker_id"
   end
 
   create_table "users", force: :cascade do |t|
