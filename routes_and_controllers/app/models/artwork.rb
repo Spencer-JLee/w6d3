@@ -39,6 +39,11 @@ class Artwork < ApplicationRecord
       .distinct
   end
 
+  has_many :artwork_collections,
+    foreign_key: :artwork_id,
+    class_name: :ArtworkCollection,
+    dependent: :destroy
+
   has_many :comments,
     foreign_key: :artwork_id,
     class_name: :Comment,

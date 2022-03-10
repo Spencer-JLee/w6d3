@@ -34,4 +34,8 @@ class User < ApplicationRecord
     class_name: :Like,
     dependent: :destroy
 
+  has_many :artwork_collections,
+    foreign_key: :owner_id,
+    class_name: :ArtworkCollection,
+    dependent: :destroy
 end
