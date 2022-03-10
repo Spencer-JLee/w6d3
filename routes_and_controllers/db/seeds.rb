@@ -27,18 +27,18 @@ artworks = Artwork.create([
   { title: "Scream", image_url:  "flickr.com/5", artist_id: users[4].id}])
 
 artwork_shares = ArtworkShare.create([
-  { artwork_id: artworks[0].id, viewer_id: users[0].id},
-  { artwork_id: artworks[0].id, viewer_id: users[1].id},
-  { artwork_id: artworks[0].id, viewer_id: users[2].id},
-  { artwork_id: artworks[0].id, viewer_id: users[3].id},
-  { artwork_id: artworks[0].id, viewer_id: users[4].id},
+  { artwork_id: artworks[0].id, viewer_id: users[0].id, favorited: true},
+  { artwork_id: artworks[0].id, viewer_id: users[1].id, favorited: true},
+  { artwork_id: artworks[0].id, viewer_id: users[2].id, favorited: true},
+  { artwork_id: artworks[0].id, viewer_id: users[3].id, favorited: true}, 
+  { artwork_id: artworks[0].id, viewer_id: users[4].id, favorited: true},
   { artwork_id: artworks[1].id, viewer_id: users[0].id},
   { artwork_id: artworks[1].id, viewer_id: users[1].id},
   { artwork_id: artworks[1].id, viewer_id: users[2].id},
   { artwork_id: artworks[2].id, viewer_id: users[4].id},
   { artwork_id: artworks[2].id, viewer_id: users[1].id},
   { artwork_id: artworks[2].id, viewer_id: users[3].id},
-  { artwork_id: artworks[3].id, viewer_id: users[0].id},
+  { artwork_id: artworks[3].id, viewer_id: users[0].id, favorited: true},
   { artwork_id: artworks[3].id, viewer_id: users[1].id},
   { artwork_id: artworks[3].id, viewer_id: users[2].id},
   { artwork_id: artworks[4].id, viewer_id: users[0].id}

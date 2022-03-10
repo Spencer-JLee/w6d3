@@ -38,6 +38,11 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  def favorites
+    @artwork = Artwork.favorited_artworks(params[:id])
+    render json: @artwork
+  end
+
   private
   def user_params
     params.require(:user).permit(:username)

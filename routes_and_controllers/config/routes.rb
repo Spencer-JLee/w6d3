@@ -17,6 +17,12 @@ Rails.application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
+  resources :users do
+    member do
+      get 'favorites'
+    end
+  end
+
   # get "/users/", to: "users#index"
   # get "/users/new", to: "users#new", as: 'new_user'
   # post "/users/", to: "users#create"
