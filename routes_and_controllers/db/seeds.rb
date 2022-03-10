@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Comment.destroy_all
 ArtworkShare.destroy_all
 Artwork.destroy_all
 User.destroy_all
@@ -40,4 +41,17 @@ artwork_shares = ArtworkShare.create([
   { artwork_id: artworks[3].id, viewer_id: users[1].id},
   { artwork_id: artworks[3].id, viewer_id: users[2].id},
   { artwork_id: artworks[4].id, viewer_id: users[0].id}
+])
+
+comments = Comment.create([
+  { body: "This artwork sucks", user_id: users[0].id, artwork_id: artworks[3].id},
+  { body: "Go back to school", user_id: users[0].id, artwork_id: artworks[4].id},
+  { body: "You called this art?", user_id: users[1].id, artwork_id: artworks[0].id},
+  { body: "Great job, I love it", user_id: users[1].id, artwork_id: artworks[2].id},
+  { body: "Excellent use of color", user_id: users[2].id, artwork_id: artworks[1].id},
+  { body: "Bob Ross would be proud", user_id: users[2].id, artwork_id: artworks[4].id},
+  { body: "It's very Baroque", user_id: users[3].id, artwork_id: artworks[1].id},
+  { body: "I would like to buy this painting", user_id: users[3].id, artwork_id: artworks[2].id},
+  { body: "I agree with the above commenter", user_id: users[4].id, artwork_id: artworks[3].id},
+  { body: ":D", user_id: users[4].id, artwork_id: artworks[2].id},
 ])

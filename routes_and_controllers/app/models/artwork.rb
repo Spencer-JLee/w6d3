@@ -28,7 +28,12 @@ class Artwork < ApplicationRecord
   def self.owned_and_shared_artworks(user_id)
     Artwork
       .left_joins(:artwork_shares)
-      .where("artist_id = ? OR artwork_shares.viewer_id = ?", user_id, user_id)
+      .where('(artist_id = :user_id) OR (artwork_shares.viewer_id = :user_id)', user_id: user_id )
       .distinct
   end
+
+  has_many :comments,
+    foreign_key: :artwork_id,
+    class_name: :Comment,
+    dependent: :destroy
 end
