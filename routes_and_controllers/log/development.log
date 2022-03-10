@@ -1921,3 +1921,97 @@ Migrating to CreateComments (20220310152037)
   [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
   [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" ORDER BY "comments"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mArtwork Load (1.0ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mArtwork Load (0.4ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" ORDER BY "artworks"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1 LIMIT $2[0m  [["artwork_id", 9], ["LIMIT", 11]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 11]]
+Started GET "/users/1/comments" for ::1 at 2022-03-10 10:49:34 -0500
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/appacademystudent/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6.3/lib/active_record/log_subscriber.rb:98
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+No template found for CommentsController#index, rendering head :no_content
+Completed 204 No Content in 428ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/users/1/comments" for ::1 at 2022-03-10 10:50:11 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"1"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+Completed 200 OK in 55ms (Views: 0.3ms | ActiveRecord: 31.2ms)
+
+
+Started GET "/users/14/comments" for ::1 at 2022-03-10 10:51:04 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"14"}
+  [1m[36mComment Load (140.6ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."user_id" = $1 LIMIT $2[0m  [["user_id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:4
+Completed 200 OK in 240ms (Views: 0.6ms | ActiveRecord: 183.3ms)
+
+
+Started GET "/users/14/comments" for ::1 at 2022-03-10 10:52:32 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"user_id"=>"14"}
+  [1m[36mComment Load (11.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."user_id" = $1[0m  [["user_id", 14]]
+  ↳ app/controllers/comments_controller.rb:5
+Completed 200 OK in 147ms (Views: 31.3ms | ActiveRecord: 90.9ms)
+
+
+Started GET "/artworks/12/comments" for ::1 at 2022-03-10 10:53:22 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"artwork_id"=>"12"}
+  [1m[36mComment Load (4.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1[0m  [["artwork_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8
+Completed 200 OK in 16ms (Views: 9.0ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/comments/" for ::1 at 2022-03-10 10:54:23 -0500
+Processing by CommentsController#create as */*
+  Parameters: {"comment"=>{"body"=>"I don't know what I'm looking at", "user_id"=>"18", "artwork_id"=>"12"}}
+  [1m[35m (27.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:15
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:15
+  [1m[36mArtwork Load (9.8ms)[0m  [1m[34mSELECT  "artworks".* FROM "artworks" WHERE "artworks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:15
+  [1m[36mComment Create (3.8ms)[0m  [1m[32mINSERT INTO "comments" ("body", "user_id", "artwork_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["body", "I don't know what I'm looking at"], ["user_id", 18], ["artwork_id", 12], ["created_at", "2022-03-10 15:54:24.087622"], ["updated_at", "2022-03-10 15:54:24.087622"]]
+  ↳ app/controllers/comments_controller.rb:15
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:15
+Completed 200 OK in 307ms (Views: 3.1ms | ActiveRecord: 136.2ms)
+
+
+Started GET "/artworks/12/comments" for ::1 at 2022-03-10 10:54:38 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"comment"=>{"body"=>"I don't know what I'm looking at", "user_id"=>"18", "artwork_id"=>"12"}, "artwork_id"=>"12"}
+  [1m[36mComment Load (39.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1[0m  [["artwork_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8
+Completed 200 OK in 43ms (Views: 2.8ms | ActiveRecord: 39.6ms)
+
+
+Started DELETE "/comments/11" for ::1 at 2022-03-10 10:54:56 -0500
+Processing by CommentsController#destroy as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:24
+  [1m[36mComment Destroy (2.3ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = $1[0m  [["id", 11]]
+  ↳ app/controllers/comments_controller.rb:24
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:24
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/artworks/12/comments/" for ::1 at 2022-03-10 10:55:09 -0500
+Processing by CommentsController#index as */*
+  Parameters: {"artwork_id"=>"12"}
+  [1m[36mComment Load (13.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."artwork_id" = $1[0m  [["artwork_id", 12]]
+  ↳ app/controllers/comments_controller.rb:8
+Completed 200 OK in 28ms (Views: 13.5ms | ActiveRecord: 13.0ms)
+
+
